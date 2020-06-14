@@ -2,6 +2,16 @@ import React from 'react';
 import styles from '../styles/Rating.module.sass';
 
 const ActivityRating = () => {
+  function teste(id) {
+    for (let i = 1; i <= id; i++) {
+      document.getElementById('star_' + i).style.fill = "yellow";
+    }
+    for (let i = id + 1; i <= 5; i++) {
+      document.getElementById('star_' + i).style.fill = "";
+    }    
+  }
+
+
   return (
     <div className={styles.rating}>
       <div className={styles.questionBlock}>
@@ -12,7 +22,7 @@ const ActivityRating = () => {
             <li>
               <input type="radio" className={styles.inputRating} name="rate" id={`rate_${item}`}/>
               <label htmlFor={`rate_${item}`} className={styles.rateButton} key={item}>
-                <svg version="1.1" className={styles.star} xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.002 512.002" stroke="#F2B84B" strokeWidth="20px" xmlSpace="preserve">
+                <svg onClick={() => {teste(item)}} version="1.1" id={`star_${item}`} className={styles.star} xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.002 512.002" stroke="#F2B84B" strokeWidth="20px" xmlSpace="preserve">
                 <g>
                     <path d="M511.267,197.258c-1.764-5.431-6.457-9.389-12.107-10.209l-158.723-23.065L269.452,20.157
                       c-2.526-5.12-7.741-8.361-13.45-8.361c-5.71,0-10.924,3.241-13.451,8.361l-70.988,143.827l-158.72,23.065
