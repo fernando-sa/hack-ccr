@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
-use App\ActivityContentQuestion;
 
 use App\ActivityResponseQuestion;
 use App\ActivityResponseRating;
 use App\ActivityResponseVideo;
+use App\Content;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -23,23 +23,32 @@ class ResponseController extends Controller
 
         $activity = Activity::findOrFail($request['activityId']);
 
-        $activityContentCount = $activity->getConents()->count();
-        $userContentsDone = $user->getActivityContentsDone($activity);
-
-        if($activityContentCount == $userContentsDone)
-            $user->addPoints($activity->value);
-
         switch($activity->type){
             case Activity::ACTIVITY_TYPE_VIDEO:
-                return $this->addVideo($request);
+                $this->addVideo($request);
+                break;
             case Activity::ACTIVITY_TYPE_QUESTION:
-                return $this->addQuestion($request);
+                $this->addQuestion($request);
+                break;
+
             case Activity::ACTIVITY_TYPE_RATING:
-                return $this->addRating($request);
+                $this->addRating($request);
+                break;
         }
+
+        $activityContentCount = $activity->getContent()->count();
+        $userContentsDone = $user->getActivityContentsDone($activity);
+
+        if($activityContentCount <= $userContentsDone)
+            $user->addPoints($activity->value);
+        else
+            return "{$activityContentCount} == {$userContentsDone}";
+
+        return;
+
     }
 
-    public function addQuestion(Request $request)
+    public function addQuestion(Request $request) : Void
     {
         ActivityResponseQuestion::create([
             'userId' => $request['userId'],
@@ -49,7 +58,7 @@ class ResponseController extends Controller
         ]);
     }
 
-    public function addVideo(Request $request)
+    public function addVideo(Request $request) : Void
     {
         ActivityResponseVideo::create([
             'userId' => $request['userId'],
@@ -57,7 +66,7 @@ class ResponseController extends Controller
         ]);
     }
 
-    public function addRating(Request $request)
+    public function addRating(Request $request) : Void
     {
         ActivityResponseRating::create([
             'userId' => $request['userId'],

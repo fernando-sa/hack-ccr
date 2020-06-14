@@ -76,5 +76,6 @@ class User extends Authenticatable
     public function addPoints($value) : void
     {
         $this->points += $value;
+        $this->save();
     }
 }
