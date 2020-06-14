@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ActivityContentVideo extends Model
+class ActivityContentVideo extends Content
 {
     protected $guarded = [];
     
