@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 
-class ActivitiesController extends Controller
+class ActivityController extends Controller
 {
     // TODO: Remove userId default value if using auth
     public function getActivities() : JsonResponse

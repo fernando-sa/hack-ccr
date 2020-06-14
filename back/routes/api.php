@@ -19,6 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/activities/board', 'ActivitiesController@getActivities');
+Route::get('/activities/board', 'ActivityController@getActivities');
 
-Route::get('/activities/content', 'ActivitiesController@getActivityContent');
+Route::get('/activities/content', 'ActivityController@getActivityContent');
