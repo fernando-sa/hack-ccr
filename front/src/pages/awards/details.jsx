@@ -1,6 +1,6 @@
 import React from 'react';
-import Layout from '../layouts/index';
-import styles from '../styles/GetAward.module.sass';
+import Layout from '../../layouts/index';
+import styles from '../../styles/GetAward.module.sass';
 
 const Awards = () => {
   return (
