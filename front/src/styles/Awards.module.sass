@@ -4,52 +4,13 @@
   font-family: var(--family-title)
   display: flex
   width: 100%
-  height: 64px
+  height: 32px
   padding: 16px
   align-items: center
   justify-content: center
-  box-sizing: border-box
-.navButtonBack
-  background-color: transparent
-  border: none
-.navTitle
-.targePoints
-  background-color: var(--yellow)
-  font-family: var(--family-title)
-  display: flex
-  justify-content: space-between
-  padding: 16px
-  align-items: center
-  strong
-    flex: 1
-    font-size: 24px
-    text-align: right
-    padding-right: 4px
+  box-sizing: border-bo
 .mainContent
   padding: 16px
-.shareTarge
-  margin: 16px 0 32px
-.shareButtons
-  display: flex
-  justify-content: space-around
-  margin: 16px 0
-.shareButton
-  padding: 8px 16px
-  border-radius: 12px
-  text-decoration: none
-  color: var(--white)
-  display: flex
-  align-items: center
-  img
-    margin-right: 10px
-    width: 24px
-.shareWhatsApp
-  background-color: #128c7e
-.shareFacebook
-  background-color: #3b5998
-.title
-  font-family: var(--family-title)
-  margin-bottom: 16px
 .card
   padding: 16px
   border: 1px solid var(--yellow)
@@ -60,13 +21,42 @@
   margin: 16px 0
   color: var(--black)
   text-decoration: none
-.cardTitle
+.title
+  font:
+    family: var(--family-title)
+    size: 24px
+  margin-bottom: 16px
+  text-align: center
+  line-height: 1.25em
+.description
+  text-align: center
+  line-height: 1.25em
+.subtitle
   font-family: var(--family-title)
-  margin-bottom: 12px
-.cardContent
-  text-align: left
-  line-height: 1.5em
-.cardFooter
-  margin-top: 16px
-  text-align: right
-  font-weight: 800
+  line-height: 1.25em
+  margin: 32px 0 16px
+.code
+  .subtitle
+  text-align: center
+  .codeHash
+    color: var(--orange)
+    font:
+      family: var(--family-title)
+      size: 32px
+    margin-bottom: 16px
+    line-height: 1.25em
+    text-align: center
+    display: block
+.partner
+  .partnerName
+    font:
+      family: var(--family-title)
+      size: 14px
+  & > *
+    margin-bottom: 8px
+  address
+    line-height: 1.25em
+.rules
+  p
+    line-height: 1.25em
+    margin-bottom: 12px
