@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/reset.css';
 import '../styles/base.sass';
-import styles from '../styles/Awards.module.sass';
+import styles from '../styles/GetAward.module.sass';
 import Navbar from '../components/Navbar';
 import iconWhatsApp from '../assets/whatsapp.svg';
 import iconFacebook from '../assets/facebook.svg';
