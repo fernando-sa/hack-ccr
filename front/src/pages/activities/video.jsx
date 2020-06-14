@@ -15,7 +15,7 @@ const Video = (props) => {
     async function fetchData(){
       try {
         const { data } = await axios.get(URI_API + '/activities/content/' + id, URI_CONFIG);
-        setData(data);
+        setData(data[0]);
       } catch (error) {
         console.log(Object.keys(error), error.message)
       }
@@ -26,8 +26,8 @@ const Video = (props) => {
     <Layout pageTitle="Vídeo">
       <div className={styles.video}>
         <div className={styles.questionBlock}>
-          <h1 className={styles.title}>Pão com Linguiça</h1>
-          <p className={styles.question}>O que você achou dessa parada?</p>
+          <h1 className={styles.title}>{data.title}</h1>
+          <p className={styles.question}>{data.description}</p>
           <iframe
             className={styles.frameVideo}
             width="100%"

@@ -23,7 +23,7 @@ const Rating = (props) => {
     async function fetchData(){
       try {
         const { data } = await axios.get(URI_API + '/activities/content/' + id, URI_CONFIG);
-        setData(data);
+        setData(data[0]);
       } catch (error) {
         console.log(Object.keys(error), error.message)
       }
@@ -34,8 +34,8 @@ const Rating = (props) => {
     <Layout pageTitle="Avaliação">
       <div className={styles.rating}>
       <div className={styles.questionBlock}>
-        <h1 className={styles.title}>Pão com Linguiça</h1>
-        <p className={styles.question}>O que você achou dessa parada?</p>
+        <h1 className={styles.title}>{data.title}</h1>
+        <p className={styles.question}>{data.description}</p>
         <ul className={styles.ratingOptions}>
           {[1,2,3,4,5].map(item => (
             <li>

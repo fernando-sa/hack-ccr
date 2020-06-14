@@ -11,6 +11,7 @@ const Question = (props) => {
   const [total, setTotal] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [question, setQuestion] = useState({});
+  const [answer, setAnswer] = useState('');
   const sendAnswer = () => {
     if(currentIndex + 1 < total) {
       setCurrentIndex(currentIndex + 1);
@@ -22,23 +23,19 @@ const Question = (props) => {
     async function fetchData(){
       try {
         const { data } = await axios.get(URI_API + '/activities/content/' + id, URI_CONFIG);
-        setData(data);
-        setTotal(data.length);
+        const treatedData = data.map((question)=>{
+          question.possibilities = question.possibilities.split(',');
+          return question;
+        })
+        setData(treatedData);
+        setTotal(treatedData.length);
+        setQuestion(treatedData[currentIndex])
       } catch (error) {
         console.log(Object.keys(error), error.message)
       }
     }
     fetchData();
   }, []);
-  useEffect(() => {
-    if(questions.length > 0) {
-      const treatedQuestions = questions.map((question)=>{
-        question.possibilities = question.possibilities.split(',');
-        return question;
-      })
-    }
-    setQuestion(questions[currentIndex])
-  }, [questions])
   useEffect(() => {
     setQuestion(questions[currentIndex])
   }, [currentIndex])
