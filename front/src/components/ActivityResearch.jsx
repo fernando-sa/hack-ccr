@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Proptypes from 'prop-types';
 import styles from '../styles/Question.module.sass';
 
-const ActivityResearch = () => {
+const ActivityResearch = (props) => {
+  const { questions } = props;
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [question, setCurrentQuestion] = useState({});
   const type = 'radio';
+  useEffect(() => {
+    // setCurrentQuestion(questions[currentQuestionIndex]);
+    console.log(questions)
+  }, questions)
   return (
     <div className={styles.research}>
       <header className={styles.track}>
         <span className={styles.progress} style={{ width: '20%' }} />
-        1 de 5 perguntas
+        {currentQuestionIndex + 1} de 5 perguntas
       </header>
       <div className={styles.questionBlock}>
         <h1 className={styles.title}>Intraestrutura</h1>
@@ -32,6 +40,10 @@ const ActivityResearch = () => {
       </footer>
     </div>
   );
+};
+
+ActivityResearch.propTypes = {
+  questions: Proptypes.array.isRequired,
 };
 
 export default ActivityResearch;
