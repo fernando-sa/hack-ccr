@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="16px" viewBox="0 0 32 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>seta-esquerda (1)</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Menu" transform="translate(-16.000000, -35.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="seta-esquerda-(1)">
+                <g transform="translate(16.000000, 35.000000)">
+                    <path d="M30.75,6.5 L4.277625,6.5 L8.662875,2.136 C9.1521875,1.649 9.1540625,0.8575625 8.6670625,0.36825 C8.1800625,-0.121125 7.3885625,-0.1229375 6.89925,0.364 L0.36775,6.864 C0.3673125,6.864375 0.367,6.8648125 0.366625,6.8651875 C-0.1214375,7.3521875 -0.123,8.1461875 0.3665,8.6348125 C0.3669375,8.6351875 0.36725,8.635625 0.367625,8.636 L6.899125,15.136 C7.388375,15.622875 8.179875,15.6211875 8.6669375,15.13175 C9.1539375,14.6424375 9.1520625,13.851 8.66275,13.364 L4.277625,9 L30.75,9 C31.440375,9 32,8.440375 32,7.75 C32,7.059625 31.440375,6.5 30.75,6.5 Z" id="Path"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
