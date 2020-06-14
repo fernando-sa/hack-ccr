@@ -5,9 +5,12 @@ import { URI_API, URI_CONFIG } from '../../variables';
 import Layout from '../../layouts/index';
 import styles from '../../styles/Video.module.sass';
 
-const Video = () => {
+const Video = (props) => {
   const { id } = useParams();
   const [data, setData] = useState([]);
+  const getPoints = () => {
+    props.history.push('/');
+  }
   useEffect(() => {
     async function fetchData(){
       try {
@@ -36,7 +39,7 @@ const Video = () => {
           />
         </div>
         <footer className={styles.footer}>
-          <button type="button" className={styles.btnSendAnswer}>Obter pontos</button>
+          <button type="button" className={styles.btnSendAnswer} onClick={() => getPoints()}>Obter pontos</button>
         </footer>
       </div>
     </Layout>

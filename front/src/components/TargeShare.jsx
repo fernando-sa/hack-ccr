@@ -6,8 +6,8 @@ import styles from '../styles/TargeShare.module.sass';
 const TargeShare = () => {
   return (
     <section className={styles.shareTarge}>
-      <h3 className={styles.title}>Compartilhe e ganhe pedágio grátis</h3>
-      <p>Ganhe um pedágio grátis para você e seu amigo a cada indicação cadastrada.</p>
+      <h3 className={styles.title}>Promoção de lançamento da CCR</h3>
+      <p>Convide um amigo e ganhe R$5 em benefícios + 30 pontos para o cadastro do app</p>
       <footer className={styles.shareButtons}>
         <a href="/" className={`${styles.shareButton} ${styles.shareWhatsApp}`}>
           <img src={iconWhatsApp} alt="WhatsApp"/>

@@ -5,7 +5,7 @@ import { URI_API, URI_CONFIG } from '../../variables';
 import Layout from '../../layouts/index';
 import styles from '../../styles/Question.module.sass';
 
-const Question = () => {
+const Question = (props) => {
   const { id } = useParams();
   const [questions, setData] = useState([]);
   const [total, setTotal] = useState(0);
@@ -14,6 +14,8 @@ const Question = () => {
   const sendAnswer = () => {
     if(currentIndex + 1 < total) {
       setCurrentIndex(currentIndex + 1);
+    } else{
+      props.history.push('/');
     }
   };
   useEffect(() => {

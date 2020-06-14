@@ -5,7 +5,7 @@ import { URI_API, URI_CONFIG } from '../../variables';
 import Layout from '../../layouts/index';
 import styles from '../../styles/Rating.module.sass';
 
-const Rating = () => {
+const Rating = (props) => {
   const { id } = useParams();
   const [data, setData] = useState([]);
   function teste(id) {
@@ -15,6 +15,9 @@ const Rating = () => {
     for (let i = id + 1; i <= 5; i++) {
       document.getElementById('star_' + i).style.fill = "";
     }    
+  }
+  const getPoints = () => {
+    props.history.push('/');
   }
   useEffect(() => {
     async function fetchData(){
@@ -54,7 +57,7 @@ const Rating = () => {
         </ul>
       </div>
       <footer className={styles.footer}>
-        <button type="button" className={styles.btnSendAnswer}>Obter pontos</button>
+        <button type="button" className={styles.btnSendAnswer} onClick={() => getPoints()}>Obter pontos</button>
       </footer>
     </div>
     </Layout>
