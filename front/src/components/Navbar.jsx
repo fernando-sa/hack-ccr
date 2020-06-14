@@ -19,13 +19,13 @@ const Navbar = () => {
         </div>
         <ul className={styles.navList}>
           <li className={styles.navItem}>
-            <a href="#" className={`${styles.navLink} ${styles.isActive}`}>Página Inicial</a>
+            <a href="/" className={`${styles.navLink} ${styles.isActive}`}>Página Inicial</a>
           </li>
           <li className={styles.navItem}>
-            <a href="#" className={styles.navLink}>Prêmios</a>
+            <a href="/premios" className={styles.navLink}>Prêmios</a>
           </li>
           <li className={styles.navItem}>
-            <a href="#" className={styles.navLink}>Meu perfil</a>
+            <a href="/meu-perfil" className={styles.navLink}>Meu perfil</a>
           </li>
           <li className={`${styles.navItem} ${styles.inviteFriends}`}>
             <a href="#" className={styles.navLink}>Convidar Amigos</a>
