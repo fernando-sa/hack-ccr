@@ -16,7 +16,7 @@ const Routes = () => {
         <Route path="/premios" exact component={Awards} />
         <Route path="/premios/:_id" component={GetAward} />
         <Route path="/resgatar" exact component={GetAward} />
-        <Route path="/atividade/:_id" exact component={Question} />
+        <Route path="/atividade/:id" exact component={Question} />
         <Route path="/meu-perfil" exact component={Profile} />
         <Route path='*' component={Page404} />
       </Switch>
