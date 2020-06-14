@@ -1,0 +1,54 @@
+POST // Cria um usuário
+/api/user/create
+    - Recebe:
+        Nome, email e categoria.
+    - Retorna:
+        Status de criação
+
+GET // Retorna o usuário autenticado
+/api/user/index
+    - Recebe:
+        Id do user autenticado
+    - Retorna:
+        Id, nome, email, categoria e pontos.
+
+GET // Pega X números de atividades com os dados - Feito
+/api/activities/board
+    - Recebe:
+        Id do user {userId}
+        Quantidade de atividades {activitiesCount}
+        Quantas atividades já foram chamadas {initialOffset?}
+    - Retorna:
+        Um número igual a {activitiesCount} de atividades possíveis. Title, description, value, type.
+
+GET // Pega dados do conteúdo de uma atividade em específico - Feito
+/api/activities/content
+    - Recebe:
+        Id do conteúdo {contentId}
+    - Retorna:
+        Os dados do conteúdo da atividade.
+
+POST // Insere respotas para uma atividade
+/api/activities/answer
+    - Recebe:
+        Id do usuário {userId}
+        Id do conteúdo {contentId}
+        Resposta do conteúdo, se for uma pesquisa é {answer} se for rating é {rating} e vídeo não é nada.
+    - Retorna:
+        Status da inserção
+
+GET // Retorna X números de prêmio
+/api/prizes/board
+    - Recebe:
+        Id do user {userId}
+        Quantidade de prêmios {priceCount}
+        Quantas prêmios já foram chamadas {initialOffset?}
+    - Retorna:
+        Um número igual a {priceCount} de prêmios. Name, description, price.
+
+GET // Retorna infos de um prêmio e o código
+/api/prizes/index
+    - Recebe:
+        Id do prêmio {prizeId}
+    - Retorna:
+        Infos do prêmio e o código do mesmo. Name, description, price, rules, partner(name, address, slogan), token.

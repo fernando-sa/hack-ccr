@@ -15,6 +15,11 @@ const Test = () => {
     <div className={styles.page}>
       <h1>Just a test</h1>
         <p> DataContent: {data}</p>
+      <form action="http://127.0.0.1:8000/api/post">
+        <input name="teste" type="text"/>
+        <input name="teste2" type="text"/>
+        <button>manda</button>
+      </form>
     </div>
   );
 };

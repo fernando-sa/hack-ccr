@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivitiesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('teste', function () {
-    return json_encode('{teste: "teste"}');
-});
+Route::get('/activities/board', 'ActivitiesController@getActivities');
+
+Route::get('/activities/content', 'ActivitiesController@getActivityContent');
