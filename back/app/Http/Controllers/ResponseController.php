@@ -8,7 +8,7 @@ use App\ActivityContentQuestion;
 use App\ActivityResponseQuestion;
 use App\ActivityResponseRating;
 use App\ActivityResponseVideo;
-
+use App\User;
 use Illuminate\Http\Request;
 
 class ResponseController extends Controller
@@ -16,7 +16,19 @@ class ResponseController extends Controller
 
     public function addResponse(Request $request)
     {
+        $userId = $request['userId'] ?? 1;
+        $request['userId'] = $userId;
+
+        $user = User::find($userId);
+
         $activity = Activity::findOrFail($request['activityId']);
+
+        $activityContentCount = $activity->getConents()->count();
+        $userContentsDone = $user->getActivityContentsDone($activity);
+
+        if($activityContentCount == $userContentsDone)
+            $user->addPoints($activity->value);
+
         switch($activity->type){
             case Activity::ACTIVITY_TYPE_VIDEO:
                 return $this->addVideo($request);
@@ -29,10 +41,8 @@ class ResponseController extends Controller
 
     public function addQuestion(Request $request)
     {
-        $userId = $request['userId'] ?? 1;
-
         ActivityResponseQuestion::create([
-            'userId' => $userId,
+            'userId' => $request['userId'],
             'activityId' => $request['activityId'],
             'contentId' => $request['contentId'],
             'answer' => $request['answer'],
@@ -41,20 +51,16 @@ class ResponseController extends Controller
 
     public function addVideo(Request $request)
     {
-        $userId = $request['userId'] ?? 1;
-
         ActivityResponseVideo::create([
-            'userId' => $userId,
+            'userId' => $request['userId'],
             'activityId' => $request['activityId'],
         ]);
     }
 
     public function addRating(Request $request)
     {
-        $userId = $request['userId'] ?? 1;
-
         ActivityResponseRating::create([
-            'userId' => $userId,
+            'userId' => $request['userId'],
             'activityId' => $request['activityId'],
             'rating' => $request['rating'],
         ]);

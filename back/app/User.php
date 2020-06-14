@@ -55,4 +55,26 @@ class User extends Authenticatable
         return array_merge($videoActivitiesId, $questionActivitiesId, $ratingActivitiesId);
 
     }
+
+    public function getActivityContentsDone($activity) : int
+    {
+
+        if($activity->type == Activity::ACTIVITY_TYPE_VIDEO){
+            return $this->videoResponses()->where('activityId', $activity->id)->count();
+        }
+
+        if($activity->type == Activity::ACTIVITY_TYPE_QUESTION){
+            return $this->questionResponses()->where('activityId', $activity->id)->count();
+        }
+
+        if($activity->type == Activity::ACTIVITY_TYPE_RATING){
+            return $this->ratingResponses()->where('activityId', $activity->id)->count();
+        }
+
+    }
+
+    public function addPoints($value) : void
+    {
+        $this->points += $value;
+    }
 }
