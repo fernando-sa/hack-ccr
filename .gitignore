@@ -3,6 +3,7 @@ back/public/hot
 back/public/sitemap.xml
 back/public/storage
 back/storage/*.key
+back/storage/logs
 back/vendor
 back/.idea
 back/.vscode

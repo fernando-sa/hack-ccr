@@ -2,11 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
-class ActivityContentRating extends Model
+class ActivityContentRating extends Content
 {
     protected $guarded = [];
     
     protected $table = 'activity_contents_rating';
+
 }

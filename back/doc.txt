@@ -29,10 +29,11 @@ GET // Pega dados do conteúdo de uma atividade em específico - Feito
         Os dados do conteúdo da atividade.
 
 POST // Insere respotas para uma atividade
-/api/activities/answer
+/api/activities/answer - Feito
     - Recebe:
         Id do usuário {userId}
-        Id do conteúdo {contentId}
+        Id da atividade {activityId}
+        Id do conteúdo {contentId} - Se for formulário
         Resposta do conteúdo, se for uma pesquisa é {answer} se for rating é {rating} e vídeo não é nada.
     - Retorna:
         Status da inserção

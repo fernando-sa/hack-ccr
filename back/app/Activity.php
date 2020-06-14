@@ -5,24 +5,25 @@ namespace App;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
-const ACTIVITY_TYPE_VIDEO = 1;
-const ACTIVITY_TYPE_QUESTION = 2;
-const ACTIVITY_TYPE_RATING = 3;
-
 class Activity extends Model
 {
+
+    const ACTIVITY_TYPE_VIDEO = 1;
+    const ACTIVITY_TYPE_QUESTION = 2;
+    const ACTIVITY_TYPE_RATING = 3;
+
     protected $guarded = [];
 
     public function getContent()
     {
         switch($this->type){
-            case ACTIVITY_TYPE_VIDEO:
+            case self::ACTIVITY_TYPE_VIDEO:
                 return $this->video;
 
-            case ACTIVITY_TYPE_QUESTION:
+            case self::ACTIVITY_TYPE_QUESTION:
                 return $this->questions;
 
-            case ACTIVITY_TYPE_RATING:
+            case self::ACTIVITY_TYPE_RATING:
                 return $this->ratings;
 
         }

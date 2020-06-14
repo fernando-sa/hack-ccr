@@ -7,7 +7,10 @@
       <link rel="stylesheet" href="css/reset.css">
     </head>
   <body>
-    <main id="main"></main>
-    <script type="text/javascript" src="js/app.js"></script>
+    <form action="/api/responses/add" method="post">
+      <input name="activityId" type="text">
+      <input name="rating" type="text">
+      <button>ssad</button>
+    </form>
   </body>
 </html>
