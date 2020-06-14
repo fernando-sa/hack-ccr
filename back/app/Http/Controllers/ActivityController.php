@@ -23,10 +23,8 @@ class ActivityController extends Controller
         return response()->json($data->toArray());
     }
 
-    public function getActivityContent()
+    public function getActivityContent($activityId)
     {
-        $activityId = request('activityId');
-
         return Activity::findOrFail($activityId)->getContent();
     }
 }
