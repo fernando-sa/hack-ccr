@@ -19,7 +19,7 @@ class CreatePrizesTable extends Migration
             $table->text('description');
             $table->text('rules');
             $table->bigInteger('partnetId');
-            $table->smallInteger('votes')->unsigned();
+            $table->smallInteger('price')->unsigned();
             $table->timestamps();
         });
     }
