@@ -12,7 +12,6 @@ const Awards = () => {
       try {
         const { data } = await axios.get(URI_API + '/prizes/board', URI_CONFIG);
         setData(data);
-        console.log(data);
       } catch (error) {
         console.log(Object.keys(error), error.message)
       }
@@ -25,7 +24,7 @@ const Awards = () => {
       <section className={styles.activities}>
         <h1 className={styles.title}>Prêmios disponíveis</h1>
         {data.map((item) => (
-          <a href={`/premios/${item}`} className={styles.card}>
+          <a href={`/premios/${item.id}`} className={styles.card}>
             <h2 className={styles.cardTitle}>{item.name}</h2>
             <div className={styles.cardContent}>
               <p>{item.description}</p>

@@ -1,17 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { URI_API, URI_CONFIG } from '../../variables';
 import Layout from '../../layouts/index';
 import styles from '../../styles/GetAward.module.sass';
 
 const Awards = () => {
+  const { id } = useParams();
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    async function fetchData(){
+      try {
+        const { data } = await axios.get(URI_API + '/prizes/index/' + id, URI_CONFIG);
+        setData(data);
+      } catch (error) {
+        console.log(Object.keys(error), error.message)
+      }
+    }
+    fetchData();
+  }, []);
   return (
     <Layout pageTitle="Resgatar prêmio">
       <section className={styles.card}>
         <header>
-          <h1 className={styles.title}>Manutenção com 50% off</h1>
-          <p className={styles.description}>Faça uma manutenção no seu caminhão na Chevrolet, com 50% de desconto!</p>
+          <h1 className={styles.title}>{data.name}</h1>
+          <p className={styles.description}>{data.description}</p>
         </header>
         <div className={styles.code}>
-          <h2 className={styles.subtitle}>Manutenção com 50% off</h2>
+          <h2 className={styles.subtitle}>Informe o código abaixo para utilizar o benefício</h2>
           <strong className={styles.codeHash}>#1sa14154</strong>
         </div>
         <div className={styles.partner}>
@@ -22,8 +38,7 @@ const Awards = () => {
         </div>
         <div className={styles.rules}>
           <h3 className={styles.subtitle}>Regras para usar o benefício</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>{data.rules}</p>
         </div>
       </section>
     </Layout>
