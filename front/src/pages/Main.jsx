@@ -3,7 +3,6 @@ import '../styles/reset.css';
 import '../styles/base.sass';
 import styles from '../styles/Main.module.sass';
 import Navbar from '../components/Navbar';
-import iconMenu from '../assets/menu.svg';
 
 
 const Main = () => {
