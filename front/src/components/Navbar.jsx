@@ -5,12 +5,12 @@ import iconBack from '../assets/back.svg';
 const Navbar = () => {
   return (
     <div className={styles.menu}>
-      <input class={styles.changeMenu} id="changeMenu" type="checkbox" />
-      <label for="changeMenu">
-        <svg class={styles.iconMenu}>
-          <line x1="0" y1="6" x2="32" y2="6" stroke="#fff" stroke-width="3"></line>
-          <line x1="0" y1="16" x2="32" y2="16" stroke="#fff" stroke-width="3"></line>
-          <line x1="0" y1="26" x2="32" y2="26" stroke="#fff" stroke-width="3"></line>
+      <input className={styles.changeMenu} id="changeMenu" type="checkbox" />
+      <label htmlFor="changeMenu">
+        <svg className={styles.iconMenu}>
+          <line x1="0" y1="6" x2="32" y2="6" stroke="#fff" strokeWidth="3"></line>
+          <line x1="0" y1="16" x2="32" y2="16" stroke="#fff" strokeWidth="3"></line>
+          <line x1="0" y1="26" x2="32" y2="26" stroke="#fff" strokeWidth="3"></line>
         </svg>
       </label>
       <nav className={styles.navbar}>

@@ -30,7 +30,7 @@ const Main = () => {
       <section className={styles.activities}>
         <h1 className={styles.title}>Minhas atividades</h1>
         {[1,2,3,4,5,6].map((item) => (
-          <a href="#" className={styles.card}>
+          <a href="#" className={styles.card} key={item}>
             <header className={styles.cardHeader}>
               <h2 className={styles.cardTitle}>Avalie a parada</h2>
               <strong className={styles.cardPoints}>500pts</strong>
