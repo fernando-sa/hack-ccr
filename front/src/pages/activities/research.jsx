@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { URI_API, URI_CONFIG } from '../../variables';
 import Layout from '../../layouts/index';
+import Modal from '../../components/Modal';
 import styles from '../../styles/Question.module.sass';
 
 const Question = (props) => {
@@ -12,11 +13,12 @@ const Question = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [question, setQuestion] = useState({});
   const [answer, setAnswer] = useState('');
+  const [openModal, setOpenModal] = useState(false);
   const sendAnswer = () => {
     if(currentIndex + 1 < total) {
       setCurrentIndex(currentIndex + 1);
     } else {
-      props.history.push('/');
+      setOpenModal(true);
     }
   };
   useEffect(() => {
@@ -77,6 +79,9 @@ const Question = (props) => {
             </footer>
           </>
         )}
+        <Modal title="Respostas enviadas" openModal={openModal} actionOnClose={() => props.history.push('/')}>
+          Obrigada por responder á pesquisa! Seus pontos serão creditados na conta!
+        </Modal>
       </div>
     </Layout>
   );

@@ -3,13 +3,15 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { URI_API, URI_CONFIG } from '../../variables';
 import Layout from '../../layouts/index';
+import Modal from '../../components/Modal';
 import styles from '../../styles/Video.module.sass';
 
 const Video = (props) => {
   const { id } = useParams();
   const [data, setData] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
   const getPoints = () => {
-    props.history.push('/');
+    setOpenModal(true);
   }
   useEffect(() => {
     async function fetchData(){
@@ -40,6 +42,9 @@ const Video = (props) => {
         <footer className={styles.footer}>
           <button type="button" className={styles.btnSendAnswer} onClick={() => getPoints()}>Obter pontos</button>
         </footer>
+        <Modal title="Atividade concluída" openModal={openModal} actionOnClose={() => props.history.push('/')}>
+          Obrigada por assistir ao vídeo! Seus pontos serão creditados na conta!
+        </Modal>
       </div>
     </Layout>
   );
