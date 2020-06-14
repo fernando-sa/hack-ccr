@@ -46,7 +46,6 @@ const Main = () => {
       try {
         const { data } = await axios.get('http://127.0.0.1:8000/api/activities/board', config);
         setData(data);
-        console.log(data)
       } catch (error) {
         console.log(Object.keys(error), error.message)
       }

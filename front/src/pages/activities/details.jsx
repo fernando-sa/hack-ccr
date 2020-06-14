@@ -16,7 +16,7 @@ const Question = () => {
     };
     async function fetchData(){
       try {
-        const { data } = await axios.get('http://127.0.0.1:8000/api/activities/board', config);
+        const { data } = await axios.get('http://127.0.0.1:8000/api/activities/content', config);
         setData(data);
         console.log(data)
       } catch (error) {
