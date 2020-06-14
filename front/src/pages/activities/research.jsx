@@ -15,7 +15,7 @@ const Question = (props) => {
   const sendAnswer = () => {
     if(currentIndex + 1 < total) {
       setCurrentIndex(currentIndex + 1);
-    } else{
+    } else {
       props.history.push('/');
     }
   };

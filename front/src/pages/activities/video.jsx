@@ -31,7 +31,6 @@ const Video = (props) => {
           <iframe
             className={styles.frameVideo}
             width="100%"
-            height="315"
             src="https://www.youtube.com/embed/Doy5Dlhd_qY"
             frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
