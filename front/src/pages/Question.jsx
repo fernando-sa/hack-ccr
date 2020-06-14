@@ -13,6 +13,7 @@ const Question = () => {
       </header>
       <main className={styles.mainContent}>
           <header className={styles.track}>
+            <span className={styles.progress} style={{ width: '20%' }} />
             1 de 5 perguntas
           </header>
           <div className={styles.questionBlock}>
