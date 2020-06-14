@@ -5,7 +5,7 @@ import styles from '../styles/Awards.module.sass';
 
 const Awards = () => {
   return (
-    <Layout showPoints={true}>
+    <Layout showPoints={true} pageTitle="Prêmios">
       <TargeShare />
       <section className={styles.activities}>
         <h1 className={styles.title}>Prêmios disponíveis</h1>

@@ -4,7 +4,7 @@ import styles from '../styles/GetAward.module.sass';
 
 const Awards = () => {
   return (
-    <Layout>
+    <Layout pageTitle="Resgatar prêmio">
       <section className={styles.card}>
         <header>
           <h1 className={styles.title}>Manutenção com 50% off</h1>

@@ -4,7 +4,7 @@ import styles from '../styles/Question.module.sass';
 
 const Question = () => {
   return (
-    <Layout>
+    <Layout pageTitle="Pergunta">
       <header className={styles.track}>
         <span className={styles.progress} style={{ width: '20%' }} />
         1 de 5 perguntas

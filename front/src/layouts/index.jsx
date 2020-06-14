@@ -7,12 +7,12 @@ import '../styles/reset.css';
 import '../styles/base.sass';
 
 const Layout = (props) => {
-  const { children, showPoints } = props;
+  const { children, showPoints, pageTitle } = props;
   return (
     <div className="layout">
       <header className={styles.navbar}>
         <Navbar />
-        <span className={styles.navTitle}>Trucko</span>
+        <span className={styles.navTitle}>{pageTitle}</span>
       </header>
       {showPoints === true && (
         <TargePoints />
@@ -27,10 +27,12 @@ const Layout = (props) => {
 Layout.propTypes = {
   children: PropTypes.element.isRequired,
   showPoints: PropTypes.bool,
+  pageTitle: PropTypes.string
 };
 
 Layout.defaultProps = {
   showPoints: false,
+  pageTitle: 'Trucko'
 };
 
 export default Layout;
