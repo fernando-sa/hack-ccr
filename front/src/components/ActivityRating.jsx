@@ -3,11 +3,11 @@ import styles from '../styles/Rating.module.sass';
 
 const ActivityRating = () => {
   return (
-    <div className={styles.research}>
+    <div className={styles.rating}>
       <div className={styles.questionBlock}>
         <h1 className={styles.title}>Pão com Linguiça</h1>
         <p className={styles.question}>O que você achou dessa parada?</p>
-        <ul className={styles.rating}>
+        <ul className={styles.ratingOptions}>
           {[1,2,3,4,5].map(item => (
             <li>
               <input type="radio" className={styles.inputRating} name="rate" id={`rate_${item}`}/>

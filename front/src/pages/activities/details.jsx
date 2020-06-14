@@ -4,6 +4,7 @@ import axios from 'axios';
 import Layout from '../../layouts/index';
 import ActivityResearch from '../../components/ActivityResearch';
 import ActivityRating from '../../components/ActivityRating';
+import ActivityVideo from '../../components/ActivityVideo';
 
 const Question = () => {
   const { id } = useParams();
@@ -30,7 +31,7 @@ const Question = () => {
   }, []);
   return (
     <Layout pageTitle="Pergunta">
-      <ActivityRating />
+      <ActivityVideo />
     </Layout>
   );
 };
