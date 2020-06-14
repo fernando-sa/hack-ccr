@@ -5,7 +5,9 @@ import Page404 from './pages/Page404';
 import Main from './pages/activities';
 import Awards from './pages/awards';
 import GetAward from './pages/awards/details';
-import Question from './pages/activities/details';
+import Research from './pages/activities/research';
+import Rating from './pages/activities/rating';
+import Video from './pages/activities/video';
 import Profile from './pages/Profile';
 
 const Routes = () => {
@@ -16,7 +18,9 @@ const Routes = () => {
         <Route path="/premios" exact component={Awards} />
         <Route path="/premios/:id" component={GetAward} />
         <Route path="/resgatar" exact component={GetAward} />
-        <Route path="/atividade/:id" exact component={Question} />
+        <Route path="/pesquisa/:id" exact component={Research} />
+        <Route path="/video/:id" exact component={Video} />
+        <Route path="/avaliacao/:id" exact component={Rating} />
         <Route path="/meu-perfil" exact component={Profile} />
         <Route path='*' component={Page404} />
       </Switch>

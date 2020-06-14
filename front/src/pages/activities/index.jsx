@@ -6,39 +6,40 @@ import styles from '../../styles/Main.module.sass';
 
 const Main = () => {
   const [data, setData] = useState([]);
-  const setButtonText = (type) => {
-    let textButton = 'Dê sua avaliação';
+  const setTypeTreatments = (type, id) => {
+    /* 
+    ** ACTIVITY_TYPE_VIDEO = 1;
+    ** ACTIVITY_TYPE_QUESTION = 2;
+    ** ACTIVITY_TYPE_RATING = 3;
+    */
+   let textButton = 'Dê sua avaliação';
+   let color = 'var(--yellow)';
+   let url = `/avaliacao/${id}`;
     switch (type) {
       case '1':
         textButton = 'Assista ao vídeo';
+        color = 'var(--light-green)';
+        url = `/video/${id}`;
         break;
       case '2':
         textButton = 'Responda a pesquisa';
-        break;
-      default:
-        break;
-    }
-    return textButton;
-  };
-  const setCardColor = (type) => {
-    let color = 'var(--yellow)';
-    switch (type) {
-      case '1':
-        color = 'var(--light-green)';
-        break;
-      case '2':
         color = 'var(--blue)';
+        url = `/pesquisa/${id}`;
         break;
       default:
         break;
     }
-    return color;
-  };
+    return {textButton, color, url}
+  }
   useEffect(() => {
     async function fetchData(){
       try {
         const { data } = await axios.get(URI_API + '/activities/board', URI_CONFIG);
-        setData(data);
+        const treatedData = data.map(item => {
+          const treatments = setTypeTreatments(item.type, item.id);
+          return {...item, ...treatments};
+        })
+        setData(treatedData);
       } catch (error) {
         console.log(Object.keys(error), error.message)
       }
@@ -50,7 +51,7 @@ const Main = () => {
       <section className={styles.activities}>
         <h1 className={styles.title}>Minhas atividades</h1>
         {data.map((item) => (
-          <a href={`/atividade/${item.id}`} className={styles.card} key={item.id} style={{ backgroundColor: setCardColor(item.type) }}>
+          <a href={item.url} className={styles.card} key={item.id} style={{ backgroundColor: item.color }}>
             <header className={styles.cardHeader}>
               <h2 className={styles.cardTitle}>{item.title}</h2>
               <strong className={styles.cardPoints}>{item.value}pts</strong>
@@ -58,7 +59,7 @@ const Main = () => {
             <div className={styles.cardContent}>
             <p>{item.description}</p>
             </div>
-            <footer className={styles.cardFooter}>{setButtonText(item.type)}</footer>
+            <footer className={styles.cardFooter}>{item.textButton}</footer>
           </a>
         ))}
       </section>
