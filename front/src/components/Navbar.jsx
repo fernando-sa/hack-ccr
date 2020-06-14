@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from  '../styles/Navbar.module.sass';
-import iconBack from '../assets/back.svg';
 
 const Navbar = () => {
   return (
@@ -28,10 +27,10 @@ const Navbar = () => {
             <a href="/meu-perfil" className={styles.navLink}>Meu perfil</a>
           </li>
           <li className={`${styles.navItem} ${styles.inviteFriends}`}>
-            <a href="#" className={styles.navLink}>Convidar Amigos</a>
+            <a href="/" className={styles.navLink}>Convidar Amigos</a>
           </li>
           <li className={styles.navItem}>
-            <a href="#" className={styles.navLink}>Sair</a>
+            <a href="/" className={styles.navLink}>Sair</a>
           </li>
         </ul>
       </nav>
