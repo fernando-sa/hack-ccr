@@ -25,3 +25,6 @@ Route::post('activities/answer', 'ResponseController@addResponse');
 
 Route::get('/prizes/board', 'PrizeController@getPrizes');
 Route::get('/prizes/index/{prizeId}', 'PrizeController@getPrize');
+
+Route::get('/user/points/{userId}', 'UserController@getPoints');
+
