@@ -3,40 +3,41 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { URI_API, URI_CONFIG } from '../../variables';
 import Layout from '../../layouts/index';
+import Modal from '../../components/Modal';
 import styles from '../../styles/Question.module.sass';
 
-const Question = () => {
+const Question = (props) => {
   const { id } = useParams();
   const [questions, setData] = useState([]);
   const [total, setTotal] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [question, setQuestion] = useState({});
+  const [answer, setAnswer] = useState('');
+  const [openModal, setOpenModal] = useState(false);
   const sendAnswer = () => {
     if(currentIndex + 1 < total) {
       setCurrentIndex(currentIndex + 1);
+    } else {
+      setOpenModal(true);
     }
   };
   useEffect(() => {
     async function fetchData(){
       try {
         const { data } = await axios.get(URI_API + '/activities/content/' + id, URI_CONFIG);
-        setData(data);
-        setTotal(data.length);
+        const treatedData = data.map((question)=>{
+          question.possibilities = question.possibilities.split(',');
+          return question;
+        })
+        setData(treatedData);
+        setTotal(treatedData.length);
+        setQuestion(treatedData[currentIndex])
       } catch (error) {
         console.log(Object.keys(error), error.message)
       }
     }
     fetchData();
   }, []);
-  useEffect(() => {
-    if(questions.length > 0) {
-      const treatedQuestions = questions.map((question)=>{
-        question.possibilities = question.possibilities.split(',');
-        return question;
-      })
-    }
-    setQuestion(questions[currentIndex])
-  }, [questions])
   useEffect(() => {
     setQuestion(questions[currentIndex])
   }, [currentIndex])
@@ -78,6 +79,9 @@ const Question = () => {
             </footer>
           </>
         )}
+        <Modal title="Respostas enviadas" openModal={openModal} actionOnClose={() => props.history.push('/')}>
+          Obrigada por responder á pesquisa! Seus pontos serão creditados na conta!
+        </Modal>
       </div>
     </Layout>
   );
