@@ -10,9 +10,16 @@ const Video = (props) => {
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-  const getPoints = () => {
-    setOpenModal(true);
-  }
+  async function getPoints()  {
+    try {
+      await axios.post(URI_API + '/activities/answer', {
+        activityId: id,
+      }, URI_CONFIG)
+      setOpenModal(true);
+    } catch (error) {
+      console.log(Object.keys(error), error.message);
+    }
+  };
   useEffect(() => {
     async function fetchData(){
       try {
@@ -43,7 +50,7 @@ const Video = (props) => {
           <button type="button" className={styles.btnSendAnswer} onClick={() => getPoints()}>Obter pontos</button>
         </footer>
         <Modal title="Atividade concluída" openModal={openModal} actionOnClose={() => props.history.push('/')}>
-          Obrigada por assistir ao vídeo! Seus pontos serão creditados na conta!
+          <p>Obrigada por assistir ao vídeo! Seus pontos serão creditados na conta!</p>
         </Modal>
       </div>
     </Layout>

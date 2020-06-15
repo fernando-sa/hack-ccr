@@ -14,7 +14,24 @@ const Question = (props) => {
   const [question, setQuestion] = useState({});
   const [answer, setAnswer] = useState('');
   const [openModal, setOpenModal] = useState(false);
-  const sendAnswer = () => {
+  const handleChange = (event) => {
+    if(question.type === 'checkbox') {
+      const newAnswer = answer + event.target.value + ',';
+      setAnswer(newAnswer);
+    } else{
+      setAnswer(event.target.value);
+    }
+  };
+  async function sendAnswer()  {
+    try {
+      await axios.post(URI_API + '/activities/answer', {
+        activityId: id,
+        contentId: question.id,
+        answer: answer
+      }, URI_CONFIG)
+    } catch (error) {
+      console.log(Object.keys(error), error.message);
+    }
     if(currentIndex + 1 < total) {
       setCurrentIndex(currentIndex + 1);
     } else {
@@ -33,7 +50,7 @@ const Question = (props) => {
         setTotal(treatedData.length);
         setQuestion(treatedData[currentIndex])
       } catch (error) {
-        console.log(Object.keys(error), error.message)
+        console.log(Object.keys(error), error.message);
       }
     }
     fetchData();
@@ -58,7 +75,7 @@ const Question = (props) => {
                   {question.possibilities.map((option, key) => (
                     <li key={key}>
                       <label htmlFor={`op0${key}`} className={styles.label}>
-                        <input type={question.type} name="option" id={`op0${key}`}/>
+                        <input type={question.type} name="option" id={`op0${key}`} value={option} onChange={handleChange} />
                         {option}
                       </label>
                     </li>
@@ -80,7 +97,7 @@ const Question = (props) => {
           </>
         )}
         <Modal title="Respostas enviadas" openModal={openModal} actionOnClose={() => props.history.push('/')}>
-          Obrigada por responder á pesquisa! Seus pontos serão creditados na conta!
+          <p>Obrigada por responder á pesquisa! Seus pontos serão creditados na conta!</p>
         </Modal>
       </div>
     </Layout>

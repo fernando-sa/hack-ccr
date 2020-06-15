@@ -10,7 +10,11 @@ const Rating = (props) => {
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-  function teste(id) {
+  const [answer, setAnswer] = useState('');
+  const handleChange = (event) => {
+    setAnswer(event.target.value)
+  };
+  function fillIcon(id) {
     for (let i = 1; i <= id; i++) {
       document.getElementById('star_' + i).style.fill = "var(--yellow)";
     }
@@ -18,9 +22,17 @@ const Rating = (props) => {
       document.getElementById('star_' + i).style.fill = "";
     }    
   }
-  const getPoints = () => {
-    setOpenModal(true);
-  }
+  async function sendAnswer()  {
+    try {
+      await axios.post(URI_API + '/activities/answer', {
+        activityId: id,
+        rating: answer
+      }, URI_CONFIG)
+      setOpenModal(true);
+    } catch (error) {
+      console.log(Object.keys(error), error.message);
+    }
+  };
   useEffect(() => {
     async function fetchData(){
       try {
@@ -40,10 +52,10 @@ const Rating = (props) => {
           <p className={styles.question}>{data.description}</p>
           <ul className={styles.ratingOptions}>
             {[1,2,3,4,5].map(item => (
-              <li>
-                <input type="radio" className={styles.inputRating} name="rate" id={`rate_${item}`}/>
+              <li key={item}>
+                <input type="radio" className={styles.inputRating} name="rate" id={`rate_${item}`} value={item} onChange={handleChange} />
                 <label htmlFor={`rate_${item}`} className={styles.rateButton} key={item}>
-                  <svg onClick={() => {teste(item)}} version="1.1" id={`star_${item}`} className={styles.star} xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.002 512.002" stroke="#F2B84B" strokeWidth="20px" xmlSpace="preserve">
+                  <svg onClick={() => {fillIcon(item)}} version="1.1" id={`star_${item}`} className={styles.star} xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.002 512.002" stroke="#F2B84B" strokeWidth="20px" xmlSpace="preserve">
                   <g>
                     <path d="M511.267,197.258c-1.764-5.431-6.457-9.389-12.107-10.209l-158.723-23.065L269.452,20.157
                       c-2.526-5.12-7.741-8.361-13.45-8.361c-5.71,0-10.924,3.241-13.451,8.361l-70.988,143.827l-158.72,23.065
@@ -59,10 +71,10 @@ const Rating = (props) => {
           </ul>
         </div>
         <footer className={styles.footer}>
-          <button type="button" className={styles.btnSendAnswer} onClick={() => getPoints()}>Obter pontos</button>
+          <button type="button" className={styles.btnSendAnswer} onClick={() => sendAnswer()}>Obter pontos</button>
         </footer>
         <Modal title="Avaliação salva" openModal={openModal} actionOnClose={() => props.history.push('/')}>
-          Obrigada por avaliar! Seus pontos serão creditados na conta!
+          <p>Obrigada por avaliar! Seus pontos serão creditados na conta!</p>
         </Modal>
       </div>
     </Layout>
