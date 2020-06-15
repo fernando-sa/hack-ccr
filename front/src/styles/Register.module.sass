@@ -1,0 +1,85 @@
+@import './mixins.sass'
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;800&family=Roboto:wght@900');
+@import url('/Heavitas.ttf');
+
+html
+  --yellow: #F2B84B
+  --orange: #F28444
+  --lighter-gray: #F2F2F2
+  --light-gray: #ECEFF6
+  --dark-gray: #3C3C3C
+  --red: #FF6263
+  --light-green: #BCE26D
+  --green: #00CC76
+  --blue: #92BAFF
+  --white: #ffffff
+  --black: #3C3C3C
+  --family-text: 'Montserrat', sans-serif
+  --family-title: 'Heavitas', sans-serif
+html, body, #root, .layout
+  min-height: 100vh
+.login
+  display: flex
+  flex-direction: column
+  align-items: center
+  color: var(--black)
+  background-color: var(--light-gray)
+  font:
+    family: var(--family-text)
+    size: 16px
+  line-height: 1.25em
+  min-height: 100vh
+  padding: 24px
+  flex: 1
+.logo
+  width: 250px
+  margin-top: 24px
+.slogan
+  font:
+    family: var(--family-title)
+    size: 14px
+  text-align: center
+  margin-bottom: 24px
+.message
+  text-align: center
+.cardLogin
+  background-color: var(--white)
+  border-radius: 8px
+  padding: 16px
+  width: 100%
+  max-width: 580px
+  box-sizing: border-box
+  margin: 24px 0
+.title
+  @include title
+  width: 100%
+  text-align: center
+.inputText
+  @include inputText
+  input
+    background-color: var(--lighter-gray)
+.radioOption
+  @include inputRadio
+.btnSaveProfile
+  @include button
+  text-decoration: none
+  color: var(--black)
+  text-align: center
+.formFooter
+  width: 100%
+  display: flex
+  justify-content: center
+  padding: 16px 0
+.register
+  display: flex
+  flex-direction: column
+  align-items: center
+  text-align: center
+  margin-top: 24px
+.btnRegister
+  @include button
+  background-color: var(--black)
+  color: var(--white)
+  text-decoration: none
+  margin-top: 16px
+  text-align: center

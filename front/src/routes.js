@@ -9,6 +9,8 @@ import Research from './pages/activities/research';
 import Rating from './pages/activities/rating';
 import Video from './pages/activities/video';
 import Profile from './pages/Profile';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 const Routes = () => {
   return (
@@ -22,6 +24,8 @@ const Routes = () => {
         <Route path="/video/:id" exact component={Video} />
         <Route path="/avaliacao/:id" exact component={Rating} />
         <Route path="/meu-perfil" exact component={Profile} />
+        <Route path="/login" exact component={Login} />
+        <Route path="/cadastro" exact component={Register} />
         <Route path='*' component={Page404} />
       </Switch>
     </BrowserRouter>

@@ -30,7 +30,7 @@ const Navbar = () => {
             <a href="/" className={styles.navLink}>Convidar Amigos</a>
           </li>
           <li className={styles.navItem}>
-            <a href="/" className={styles.navLink}>Sair</a>
+            <a href="/login" className={styles.navLink}>Sair</a>
           </li>
         </ul>
       </nav>
